@@ -1,0 +1,19 @@
+#spring.application.name=KoiAuction
+server:
+  port: 8080
+  servlet: { context-path: /BidKoi }
+
+spring:
+  datasource:
+    driver-class-name: "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+    url: "jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=Orchid"
+    username: "sa"
+    password: "12345"
+  jpa:
+    properties:
+      hibernate:
+        dialect: "org.hibernate.dialect.SQLServerDialect"
+    hibernate:
+      ddl-auto: update
+jwt:
+  signerKey: "0g0avXnDMtvyD/NQA5jLi3d6/xYtNwMlYsETTarZ6g8smHtHp+p6u2Pa4r1Zpyzr"
