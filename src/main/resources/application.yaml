@@ -15,5 +15,18 @@ spring:
         dialect: "org.hibernate.dialect.SQLServerDialect"
     hibernate:
       ddl-auto: update
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: thanhnguyendc01@gmail.com
+    password: asolicqaidlawitk
+    protocol: smtp
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+
+
+
 jwt:
   signerKey: "0g0avXnDMtvyD/NQA5jLi3d6/xYtNwMlYsETTarZ6g8smHtHp+p6u2Pa4r1Zpyzr"

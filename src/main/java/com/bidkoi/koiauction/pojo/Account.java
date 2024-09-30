@@ -20,4 +20,5 @@ public class Account implements Serializable {
     String password;
     String email;
     String phone;
+
 }
