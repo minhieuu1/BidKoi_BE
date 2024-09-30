@@ -24,6 +24,7 @@ import com.nimbusds.jwt.JWTClaimsSet;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -44,6 +45,9 @@ public class AccountService implements IAccountService {
         if (iAccountRepository.existsByUsername(request.getUsername())) {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
+        else if(iAccountRepository.existsByEmail(request.getEmail())) {
+            throw new AppException(ErrorCode.EMAIL_EXISTED);
+        }
 
         Account account = iAccountMapper.toAccount(request);
         account.setPassword(this.passwordEncoder.encode(request.getPassword()));
@@ -62,9 +66,13 @@ public class AccountService implements IAccountService {
         var token = generateToken(request.getUsername());
         return LoginResponse.builder()
                 .token(token)
-                .success(true)
+                .username(user.getUsername())
+                .email(user.getEmail())
+                .phone(user.getPhone())
                 .build();
     }
+
+
 
     private String generateToken(String username) {
         JWSHeader header = new JWSHeader(JWSAlgorithm.HS512);

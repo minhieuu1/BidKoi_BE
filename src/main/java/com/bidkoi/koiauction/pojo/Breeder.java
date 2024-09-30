@@ -4,22 +4,22 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
+import java.util.List;
 
-@Entity
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Account implements Serializable {
+@Entity
+public class Breeder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "AccountID")
-    String id;
-    String username;
-    String password;
-    String email;
-    @Column(name = "Phone_number")
-    String phone;
+    @Column(name = "BreederID")
+    String breederID;
+    @Column(name = "Breeder_name")
+    String breederName;
+    String address;
+//    @OneToMany
+//    List<Koi> kois;
 }
